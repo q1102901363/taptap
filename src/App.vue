@@ -1,30 +1,21 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <!-- 头部区域 -->
+    <MyTab/>
+    <!-- 内容区域 -->
+    <div class="container">
+      <router-view></router-view>
+    </div>
+    <!-- 底部栏 -->
+    <MyTabBar/>
   </div>
-  <router-view />
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<script setup>
+  import { reactive } from 'vue'
+  import MyTab from './components/my-tab'
+  import MyTabBar from './components/my-tabbar'
+  const state = reactive({});
+</script>
+<style module lang="scss">
+     
 </style>
