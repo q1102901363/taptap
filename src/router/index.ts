@@ -1,67 +1,108 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component:  () =>
-    import(/* webpackChunkName: "home" */ "../views/home/index.vue"),
-  },
-  {
-    path: "/cate",
-    name: "Cate",
-    component:  () =>
-    import(/* webpackChunkName: "cate" */ "../views/cate/index.vue"),
-  },
-  {
-    path: "/active",
-    name: "Active",
-    component:  () =>
-    import(/* webpackChunkName: "cate" */ "../views/active/index.vue"),
-  },
-  {
-    path: "/car",
-    name: "Car",
-    component:  () =>
-    import(/* webpackChunkName: "cate" */ "../views/car/index.vue"),
-  },
-  {
-    path: "/mine",
-    name: "Mine",
-    component:  () =>
-    import(/* webpackChunkName: "mine" */ "../views/mine/index.vue"),
-  },
-  {
-    path: "/register",
-    name: "Register",
-    component:  () =>
-    import(/* webpackChunkName: "mine" */ "../views/register/index.vue"),
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component:  () =>
-    import(/* webpackChunkName: "mine" */ "../views/login/index.vue"),
-  },
-  {
-    path: "/list/:id",
-    name: "List",
-    component:  () =>
-    import(/* webpackChunkName: "list" */ "../views/list/index.vue"),
-  },
-  {
-    path: "/detail/:id",
-    name: "Detail",
-    component:  () =>
-    import(/* webpackChunkName: "list" */ "../views/detail/index.vue"),
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
     component: () =>
-    import(/* webpackChunkName: "list" */ "../views/not-found/index.vue"),
-  }
- 
+      import(/* webpackChunkName:"home" */ "../views/home/index.vue"),
+    meta: {
+      titleA: "推荐",
+      titleB: "即将上线",
+      titleC: "视频",
+      nameA: "Home",
+      nameB: "Update",
+      nameC: "Video",
+    },
+  },
+  {
+    path: "/update",
+    name: "Update",
+    component: () =>
+      import(/* webpackChunkName:"update" */ "../views/update/index.vue"),
+    meta: {
+      titleA: "推荐",
+      titleB: "即将上线",
+      titleC: "视频",
+      nameA: "Home",
+      nameB: "Update",
+      nameC: "Video",
+    },
+  },
+  {
+    path: "/video",
+    name: "Video",
+    component: () =>
+      import(/* webpackChunkName:"video" */ "../views/video/index.vue"),
+    meta: {
+      titleA: "推荐",
+      titleB: "即将上线",
+      titleC: "视频",
+      nameA: "Home",
+      nameB: "Update",
+      nameC: "Video",
+    },
+  },
+  {
+    path: "/categories",
+    name: "Categories",
+    component: () =>
+      import(
+        /* webpackChunkName:"categories" */ "../views/categories/index.vue"
+      ),
+  },
+  {
+    path: "/forum",
+    name: "Forum",
+    redirect: "/forum/follow",
+    component: () =>
+      import(/* webpackChunkName:"forum" */ "../views/forum/index.vue"),
+    children: [
+      {
+        path: "/forum/follow",
+        name: "Follow",
+        component: () =>
+          import(/* webpackChunkName:"forum" */ "../views/forum/follow.vue"),
+        meta: {
+          titleA: "关注",
+          titleB: "推荐",
+          titleC: "论坛",
+          nameA: "Follow",
+          nameB: "Hot",
+          nameC: "Groups",
+        },
+      },
+      {
+        path: "/forum/hot",
+        name: "Hot",
+        component: () =>
+          import(/* webpackChunkName:"forum" */ "../views/forum/hot.vue"),
+        meta: {
+          titleA: "关注",
+          titleB: "推荐",
+          titleC: "论坛",
+          nameA: "Follow",
+          nameB: "Hot",
+          nameC: "Groups",
+        },
+      },
+      {
+        path: "/forum/groups",
+        name: "Groups",
+        component: () =>
+          import(/* webpackChunkName:"forum" */ "../views/forum/groups.vue"),
+        meta: {
+          titleA: "关注",
+          titleB: "推荐",
+          titleC: "论坛",
+          nameA: "Follow",
+          nameB: "Hot",
+          nameC: "Groups",
+        },
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
